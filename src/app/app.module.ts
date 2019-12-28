@@ -7,6 +7,8 @@ import { NotesListComponent } from './notes-base/notes-list/notes-list.component
 import { EditNoteComponent } from './notes-base/edit-note/edit-note.component';
 import { NotesBaseComponent } from './notes-base/notes-base.component';
 
+import { appStoreProviders } from '../utils/store/index';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +20,7 @@ import { NotesBaseComponent } from './notes-base/notes-base.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [appStoreProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

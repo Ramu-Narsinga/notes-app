@@ -1,4 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+
+import { Store } from 'redux';
+
+import { AppStore } from '../../../utils/store';
+
+import { AppState } from '../../../utils/interfaces';
+
+import * as NotesAppActions from '../../../utils/store/actions';
 
 @Component({
   selector: 'app-notes-list',
@@ -7,9 +15,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NotesListComponent implements OnInit {
 
-  constructor() { }
+  constructor(@Inject(AppStore) private store: Store<AppState>) {
+    store.subscribe(() => this.readState());
+    this.readState();
+  }
+
+  readState() {
+    const state: AppState = this.store.getState() as AppState;
+    console.log("inside readState::", state);
+    this.notesList = state.notes;
+  }
 
   ngOnInit() {
+
   }
 
   notesList: any = [

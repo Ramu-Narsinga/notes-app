@@ -1,4 +1,10 @@
-import { Action, Reducer, ListenerCallback, UnsubscribeCallback } from '../interfaces';
+import { InjectionToken } from '@angular/core';
+
+import { Action, Reducer, ListenerCallback, UnsubscribeCallback, AppState } from '../interfaces';
+
+import { createStore } from 'redux';
+
+import { reducer } from '../store/reducers';
 
 class Store<T> {
     private _state: T;
@@ -27,6 +33,18 @@ class Store<T> {
         };
     }
 }
+
+export const AppStore = new InjectionToken('App.store');
+
+export function createAppStore(): Store<AppState> {
+  return createStore<AppState, any, any, any>(
+    reducer
+  );
+}
+ 
+export const appStoreProviders = [
+   { provide: AppStore, useFactory: createAppStore }
+];
 
 export { 
     Store

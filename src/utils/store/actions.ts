@@ -1,3 +1,19 @@
-import { Action } from '../interfaces';
+import {
+    Action,
+    ActionCreator
+} from 'redux';
 
-export let addNote: Action = { type: 'ADD_NOTE' }
+export const ADD_NOTE: string = 'ADD_NOTE';
+export const addNote: ActionCreator<Action> = () => ({
+  type: ADD_NOTE
+});
+
+export const DELETE_NOTE: string = 'DELETE_NOTE';
+export const deleteNote: ActionCreator<Action> = () => ({
+  type: DELETE_NOTE
+});
+
+export const SEARCH_NOTES: string = 'SEARCH_NOTES';
+export const searchNote: ActionCreator<Action> = () => ({
+  type: SEARCH_NOTES
+});
