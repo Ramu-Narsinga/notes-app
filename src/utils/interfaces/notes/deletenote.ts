@@ -1,5 +1,5 @@
-import { Action, DeleteNote } from '../index';
+import { Action } from '../index';
 
 export interface DeleteNoteAction extends Action {
-    id: DeleteNote;
+    id: number;
 }

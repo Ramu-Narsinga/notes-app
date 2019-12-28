@@ -1,5 +1,5 @@
 export interface Note {
-    id: number,
+    id?: number,
     title: string;
     timeStamp: string;
     description: string;
@@ -10,5 +10,7 @@ export interface DeleteNote {
 }
 
 export interface AppState {
+    error?: boolean;
     notes: Note[];
+    errMsg?: string;
 }

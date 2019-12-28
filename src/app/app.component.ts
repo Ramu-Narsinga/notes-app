@@ -28,15 +28,58 @@ export class AppComponent implements OnInit {
       console.log('subscribed: ', store.getState());
     });
     
+    // store.dispatch({ 
+    //   type: 'ADD_NOTE', 
+    //   payload: {
+    //     title: "note 3",
+    //     timeStamp: "Tuesday",
+    //     description: "note 1 description"
+    //   }});
+
+    // store.dispatch({ 
+    //   type: 'ADD_NOTE', 
+    //   payload: {
+    //     title: "note 4",
+    //     timeStamp: "Monday",
+    //     description: "note 2 description"
+    //   }});
+
+    // store.dispatch({ 
+    //   type: 'SEARCH_NOTES', 
+    //   payload: {
+    //     keyword: "note 2"
+    // }});
+
+    // store.dispatch({ 
+    //   type: 'SEARCH_NOTES', 
+    //   payload: {
+    //     keyword: ""
+    // }});
+
+    // store.dispatch({ 
+    //   type: 'SEARCH_NOTES', 
+    //   payload: {
+    //     keyword: "note 1"
+    // }});
+
     store.dispatch({ 
-      type: 'ADD_NOTE', 
+      type: 'DELETE_NOTE', 
       payload: {
-        id: 1,
-        title: "note 1",
-        timeStamp: "Tuesday",
-        description: "note 1 description"
-      }});
+        id: 0
+    }});
     
+    store.dispatch({ 
+      type: 'DELETE_NOTE', 
+      payload: {
+        id: 4
+    }});
+
+    store.dispatch({ 
+      type: 'DELETE_NOTE', 
+      payload: {
+        id: 2
+    }});
+
     unsubscribe();
   }
 }
