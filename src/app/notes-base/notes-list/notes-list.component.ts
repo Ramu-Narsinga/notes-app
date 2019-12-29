@@ -10,6 +10,8 @@ import * as NotesAppActions from '../../../utils/store/actions';
 
 import { NotesAppService } from '../../../utils/services/notes-app.service';
 
+import { viewPort } from '../../../utils/common';
+
 @Component({
   selector: 'app-notes-list',
   templateUrl: './notes-list.component.html',
@@ -32,7 +34,7 @@ export class NotesListComponent implements OnInit {
   }
 
   setSidebar() {
-    if (this.resizedWidth < 545) {
+    if (this.resizedWidth < viewPort) {
       this.closeNav();
     } else {
       this.openNav();
