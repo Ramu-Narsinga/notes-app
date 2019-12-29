@@ -1,2 +1,3 @@
 <button (click)="addNote()">Add</button>
 <button (click)="deleteNote()">Delete</button>
+<input type="text" [(ngModel)]="searchKey" (ngModelChange)="searchNotes()" />

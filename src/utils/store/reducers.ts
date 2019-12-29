@@ -67,7 +67,7 @@ let reducer: Reducer<AppState> = (state: AppState = initState, action: Action): 
             });
         case 'UPDATE_NOTE':
             let updateNoteState = {...state};
-            console.log("updateNoteState", updateNoteState);
+            // console.log("updateNoteState", updateNoteState);
             updateNoteState.notes[updateNoteState.activeIndex] = (<AddNoteAction>action).payload.note
             return Object.assign(
               {}, 

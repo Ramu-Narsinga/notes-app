@@ -1,7 +1,7 @@
 export interface Note {
     id?: number,
     title: string;
-    timeStamp: string;
+    timeStamp: any;
     description: string;
 }
 

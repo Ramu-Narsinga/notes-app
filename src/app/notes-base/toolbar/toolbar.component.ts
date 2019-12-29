@@ -15,6 +15,8 @@ import * as NotesAppActions from '../../../utils/store/actions';
 })
 export class ToolbarComponent implements OnInit {
 
+  searchKey: any;
+
   constructor(@Inject(AppStore) private store: Store<AppState>) { }
 
   ngOnInit() {
@@ -24,9 +26,9 @@ export class ToolbarComponent implements OnInit {
     this.store.dispatch({
       type: NotesAppActions.ADD_NOTE, 
       payload: {
-                  title: 'note 3', 
-                  description: 'note3 description', 
-                  timeStamp: 'Monday'
+                  title: '', 
+                  description: '', 
+                  timeStamp: Date.now()
                 }
     });
   }
@@ -35,6 +37,16 @@ export class ToolbarComponent implements OnInit {
     this.store.dispatch({
       type: NotesAppActions.DELETE_NOTE
     });
+  }
+
+  searchNotes() {
+    // console.log("searchKey", this.searchKey);
+    this.store.dispatch({
+      type: NotesAppActions.SEARCH_NOTES,
+      payload: {
+        keyword: this.searchKey
+      }
+    })
   }
 
 }
