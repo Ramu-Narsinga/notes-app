@@ -27,9 +27,9 @@ let reducer: Reducer<AppState> = (state: AppState = initState, action: Action): 
             activeIndex
           } = newState;
 
-          let delNotes: any = notes.filter(note => note.id === activeIndex);
-
-          if (delNotes.length !== 0) {
+          let activeNote: any = notes[activeIndex];
+          debugger;
+          if (activeNote.id != undefined) {
             newState.notes.splice(activeIndex, 1);
             newState.activeIndex = activeIndex > 1 ? activeIndex - 1 : 0;
             return newState;
