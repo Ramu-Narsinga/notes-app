@@ -8,6 +8,8 @@ import { AppState } from '../../../utils/interfaces';
 
 import * as NotesAppActions from '../../../utils/store/actions';
 
+import { NotesAppService } from '../../../utils/services/notes-app.service';
+
 @Component({
   selector: 'app-notes-list',
   templateUrl: './notes-list.component.html',
@@ -17,7 +19,8 @@ export class NotesListComponent implements OnInit {
 
   resizedWidth = window.innerWidth;
 
-  constructor(@Inject(AppStore) private store: Store<AppState>) {
+  constructor(@Inject(AppStore) private store: Store<AppState>,
+              private notesAppService: NotesAppService) {
     this.readState();
     store.subscribe(() => this.readState());
     this.setSidebar();
@@ -61,6 +64,8 @@ export class NotesListComponent implements OnInit {
         id: index
       }
     });
+
+    this.notesAppService.setActiveIndex();
   }
 
   sidebarClosed: any = false;

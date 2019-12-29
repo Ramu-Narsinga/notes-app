@@ -24,27 +24,20 @@ let reducer: Reducer<AppState> = (state: AppState = initState, action: Action): 
               activeIndex: len
             });
         case 'DELETE_NOTE':
-          let newState = {...state};
           let {
             notes,
             activeIndex
-          } = newState;
-
-          let activeNote: any = notes[activeIndex];
+          } = state;
+          console.log("state in delete_node", state);
           debugger;
-          if (activeNote.id != undefined) {
-            // newState.notes.splice(activeIndex, 1);
-            newState.notes = [...state.notes.slice(0, activeIndex),
-              ...state.notes.slice(activeIndex + 1)]
-            newState.activeIndex = activeIndex > 1 ? activeIndex - 1 : 0;
-            return newState;
-          } else {
-            return {
-              error: true,
-              errMsg: "Did not find the note with id::"+activeIndex,
-              notes: [...state.notes]
-            }
-          }
+          return Object.assign(
+            {}, 
+            state, 
+            {
+              notes: notes.filter( (item) => item.id !== activeIndex),
+              // state.notes.splice(state.activeIndex, 1),
+              activeIndex: activeIndex > 1 ? activeIndex - 1 : 0
+            });
         case 'SEARCH_NOTES':
           if (!(<AddNoteAction>action).payload.keyword) {
             return Object.assign(
@@ -67,6 +60,7 @@ let reducer: Reducer<AppState> = (state: AppState = initState, action: Action): 
           }
         case 'SET_ACTIVE_INDEX':
           let sActiveIndex = (<AddNoteAction>action).payload.id;
+          debugger;
           return Object.assign(
             {}, 
             state,

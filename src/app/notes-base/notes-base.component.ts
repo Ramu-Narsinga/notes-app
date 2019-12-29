@@ -29,7 +29,6 @@ export class NotesBaseComponent implements OnInit {
     this.store.subscribe(() => {
       setInitState(payload);
     });
-    // initState = payload;
     this.store.dispatch({
       type: NotesAppActions.INIT_APP_DATA, 
       payload

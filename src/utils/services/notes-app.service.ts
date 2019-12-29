@@ -31,16 +31,17 @@ export class NotesAppService {
   }
 
   deleteNotes() {
-   this.registerAndUpdateLS('delete');
+     this.registerAndUpdateLS('delete');
+  }
+
+  setActiveIndex() {
+    this.registerAndUpdateLS('active');
   }
 
   registerAndUpdateLS(type: any) {
-    let unsubscribe = this.store.subscribe(() => {
-      console.log("inside:", type, "state value:", this.store.getState());
-      this.appState = this.store.getState();
-      // store in local storage for now
-      localStorage.setItem('notesAppData', JSON.stringify(this.appState));
-      unsubscribe();
-    });
+    console.log("inside:", type, "state value:", this.store.getState());
+    this.appState = this.store.getState();
+    // store in local storage for now
+    localStorage.setItem('notesAppData', JSON.stringify(this.appState));
   }
 }

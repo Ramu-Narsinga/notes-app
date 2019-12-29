@@ -57,6 +57,7 @@ export class EditNoteComponent implements OnInit {
       }
     } else {
       this.note = notes[activeIndex];
+      this.note.id = activeIndex;
     }
   }
 
