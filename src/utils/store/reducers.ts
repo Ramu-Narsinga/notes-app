@@ -28,7 +28,7 @@ let reducer: Reducer<AppState> = (state: AppState = initState, action: Action): 
             notes,
             activeIndex
           } = state;
-          console.log("state in delete_node", state);
+          // console.log("state in delete_node", state);
           debugger;
           return Object.assign(
             {}, 

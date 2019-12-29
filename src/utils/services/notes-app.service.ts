@@ -39,7 +39,7 @@ export class NotesAppService {
   }
 
   registerAndUpdateLS(type: any) {
-    console.log("inside:", type, "state value:", this.store.getState());
+    // console.log("inside:", type, "state value:", this.store.getState());
     this.appState = this.store.getState();
     // store in local storage for now
     localStorage.setItem('notesAppData', JSON.stringify(this.appState));

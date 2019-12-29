@@ -9,16 +9,18 @@
   overflow-y: scroll;
   transition: 0.5s;
   padding-top: 60px;
+  padding-right: 32px;
 }
 
 .sidebar li, .sidebar a {
-  padding: 8px 8px 8px 32px;
+  // padding: 8px 8px 8px 32px;
   text-decoration: none;
   font-size: 15px;
   color: #818181;
   display: block;
   transition: 0.2s;
   cursor: pointer;
+  padding-bottom: 12px;
 }
 
 .sidebar li:hover, .sidebar a:hover {

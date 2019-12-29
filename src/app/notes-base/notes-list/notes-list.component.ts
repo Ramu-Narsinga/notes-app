@@ -49,7 +49,7 @@ export class NotesListComponent implements OnInit {
 
   readState() {
     const state: AppState = this.store.getState() as AppState;
-    console.log("inside readState::", state);
+    // console.log("inside readState::", state);
 
     this.activeIndex = state.activeIndex;
 
