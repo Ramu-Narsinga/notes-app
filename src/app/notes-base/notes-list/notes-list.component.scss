@@ -1,12 +1,12 @@
 .sidebar {
-  height: 100%;
+  height: 85vh;
   width: inherit;
-  position: fixed;
   z-index: 1;
   top: 0;
   left: 0;
   background-color: #111;
   overflow-x: hidden;
+  overflow-y: scroll;
   transition: 0.5s;
   padding-top: 60px;
 }
@@ -14,7 +14,7 @@
 .sidebar li, .sidebar a {
   padding: 8px 8px 8px 32px;
   text-decoration: none;
-  font-size: 25px;
+  font-size: 15px;
   color: #818181;
   display: block;
   transition: 0.2s;
@@ -48,4 +48,10 @@
 #notes-list-e {
   transition: margin-left 0.5s;
   padding: 16px;
+}
+
+@media screen and (max-width: 575px) {
+  .sidebar {
+    height: 36vh;
+  }
 }

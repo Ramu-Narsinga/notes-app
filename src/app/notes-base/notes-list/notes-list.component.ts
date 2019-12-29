@@ -15,9 +15,25 @@ import * as NotesAppActions from '../../../utils/store/actions';
 })
 export class NotesListComponent implements OnInit {
 
+  resizedWidth = window.innerWidth;
+
   constructor(@Inject(AppStore) private store: Store<AppState>) {
     this.readState();
     store.subscribe(() => this.readState());
+    this.setSidebar();
+    window.addEventListener('resize', () => {
+      // console.log("width detected", window.innerWidth);
+      this.resizedWidth = window.innerWidth;
+      this.setSidebar();
+    }, true);
+  }
+
+  setSidebar() {
+    if (this.resizedWidth < 545) {
+      this.closeNav();
+    } else {
+      this.openNav();
+    }
   }
 
   notesList: any;
@@ -42,20 +58,20 @@ export class NotesListComponent implements OnInit {
     });
   }
 
-  sideBarOpen: any = false;
+  sidebarClosed: any = false;
 
-  openNav() {
-    this.sideBarOpen = false;
-    event.preventDefault();
-    document.getElementById("notes-sidebar").style.width = "inherit";
-    document.getElementById("notes-list-e").style.marginLeft = "inherit";
+  openNav(event?: any) {
+    this.sidebarClosed = false;
+    if (event) {
+      event.preventDefault();
+    }
   }
 
-  closeNav(event) {
-    this.sideBarOpen = true;
-    event.preventDefault();
-    document.getElementById("notes-sidebar").style.width = "0";
-    document.getElementById("notes-list-e").style.marginLeft= "0";
+  closeNav(event?: any) {
+    this.sidebarClosed = true;
+    if (event) {
+      event.preventDefault();
+    }
   }
 
   _MS_PER_DAY = 1000 * 60 * 60 * 24;

@@ -1,5 +1,5 @@
-<div id="notes-sidebar" class="sidebar"> 
-    <a href="#" class="closebtn" *ngIf="!sideBarOpen" (click)="closeNav($event)">x</a>
+<div id="notes-sidebar" class="sidebar" *ngIf="!sidebarClosed"> 
+    <a href="#" class="closebtn" (click)="closeNav($event)">x</a>
     <ul *ngIf="notesList.length != 0; else noNoteFound">
       <li *ngFor="let note of notesList" (click)="setActiveNote(note)">
         <div>
@@ -17,10 +17,14 @@
     </ul>
 
     <ng-template #noNoteFound>
-        No Notes Found.
+      <ul>
+        <li>
+          No Notes Found.
+        </li>
+      </ul>
     </ng-template>
 </div>
 
-<div id="notes-list-e">
-    <a href="#" class="openbtn" *ngIf="sideBarOpen" (click)="openNav($event)">☰</a>
+<div id="notes-list-e" *ngIf="sidebarClosed">
+    <a href="#" class="openbtn" (click)="openNav($event)">☰</a>
 </div>

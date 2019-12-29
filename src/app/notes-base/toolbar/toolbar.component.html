@@ -1,5 +1,5 @@
 <div  class="toolbar-container">
     <button class="tb-ele" (click)="addNote()">Add</button>
     <button class="tb-ele" (click)="deleteNote()">Delete</button>
-    <input class="tb-ele search" type="text" [(ngModel)]="searchKey" (ngModelChange)="searchNotes()" />
+    <input class="tb-ele search" type="text" placeholder="search..." [(ngModel)]="searchKey" (ngModelChange)="searchNotes()" />
 </div>
