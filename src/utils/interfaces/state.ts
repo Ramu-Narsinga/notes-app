@@ -13,4 +13,5 @@ export interface AppState {
     error?: boolean;
     notes: Note[];
     errMsg?: string;
+    activeIndex?: number;
 }

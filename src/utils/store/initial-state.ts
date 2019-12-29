@@ -14,7 +14,8 @@ export const initState: AppState = {
             timeStamp: "Tuesday",
             description: "note 2 description"
           }
-    ]
+    ],
+    activeIndex: 0
 }
 
 // {

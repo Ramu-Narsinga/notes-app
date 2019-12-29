@@ -16,33 +16,26 @@ import * as NotesAppActions from '../../../utils/store/actions';
 export class NotesListComponent implements OnInit {
 
   constructor(@Inject(AppStore) private store: Store<AppState>) {
-    store.subscribe(() => this.readState());
     this.readState();
+    store.subscribe(() => this.readState());
   }
+
+  notesList: any;
 
   readState() {
     const state: AppState = this.store.getState() as AppState;
-    console.log("inside readState::", state);
+    // console.log("inside readState::", state);
     this.notesList = state.notes;
   }
 
-  ngOnInit() {
+  ngOnInit() {}
 
+  setActiveNote(note) {
+    this.store.dispatch({
+      type: NotesAppActions.SET_ACTIVE_INDEX, 
+      payload: {
+                id: note.id
+      }
+    });
   }
-
-  notesList: any = [
-    {
-      title: 'note 1',
-      description: 'note 1 description',
-      id: 0,
-      timeStamp: "Monday"
-    },
-    {
-      title: 'note 2',
-      description: 'note 2 description',
-      id: 0,
-      timeStamp: "Monday"
-    }
-  ]
-
 }

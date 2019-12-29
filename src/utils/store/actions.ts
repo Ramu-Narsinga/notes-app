@@ -17,3 +17,8 @@ export const SEARCH_NOTES: string = 'SEARCH_NOTES';
 export const searchNote: ActionCreator<Action> = () => ({
   type: SEARCH_NOTES
 });
+
+export const SET_ACTIVE_INDEX: string = 'SET_ACTIVE_INDEX';
+export const activeIndex: ActionCreator<Action> = () => ({
+  type: SET_ACTIVE_INDEX
+});

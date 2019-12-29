@@ -51,6 +51,14 @@ let reducer: Reducer<AppState> = (state: AppState = initState, action: Action): 
                 notes: notes.filter(note => note.title.includes((<AddNoteAction>action).payload.keyword) || note.description.includes((<AddNoteAction>action).payload.keyword))
               });
           }
+        case 'SET_ACTIVE_INDEX':
+          let activeIndex = (<AddNoteAction>action).payload.id;
+          return Object.assign(
+            {}, 
+            state,
+            {
+              activeIndex
+            });
         default:
           return state;
     }

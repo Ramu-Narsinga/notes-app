@@ -8,13 +8,15 @@ import { EditNoteComponent } from './notes-base/edit-note/edit-note.component';
 import { NotesBaseComponent } from './notes-base/notes-base.component';
 
 import { appStoreProviders } from '../utils/store/index';
+import { ToolbarComponent } from './notes-base/toolbar/toolbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NotesListComponent,
     EditNoteComponent,
-    NotesBaseComponent
+    NotesBaseComponent,
+    ToolbarComponent
   ],
   imports: [
     BrowserModule,

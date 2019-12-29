@@ -1,5 +1,5 @@
 <ul>
-  <li *ngFor="let note of notesList">
+  <li *ngFor="let note of notesList" (click)="setActiveNote(note)">
     <div>
       Title: {{note.title}}
     </div>
