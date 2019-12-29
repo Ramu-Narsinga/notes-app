@@ -1,2 +1,2 @@
-<input name="title" [(ngModel)]="note.title" (input)="onNoteChange($event)" />
-<textarea [(ngModel)]="note.description" name="description" (input)="onNoteChange($event)"></textarea>
+<input name="title" [(ngModel)]="note && note.title" (input)="onNoteChange($event)" />
+<textarea [(ngModel)]="note && note.description" name="description" (input)="onNoteChange($event)"></textarea>

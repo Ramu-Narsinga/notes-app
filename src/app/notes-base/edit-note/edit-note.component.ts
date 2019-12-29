@@ -34,6 +34,14 @@ export class EditNoteComponent implements OnInit {
     } = this.store.getState();
 
     this.note = notes[activeIndex];
+
+    if (!notes[activeIndex]) {
+      this.note = {
+        title: "",
+        description: "",
+        timeStamp: ""
+      }
+    }
   }
 
   onNoteChange(event) {

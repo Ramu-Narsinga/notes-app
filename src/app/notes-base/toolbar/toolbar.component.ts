@@ -31,4 +31,10 @@ export class ToolbarComponent implements OnInit {
     });
   }
 
+  deleteNote(note) {
+    this.store.dispatch({
+      type: NotesAppActions.DELETE_NOTE
+    });
+  }
+
 }
