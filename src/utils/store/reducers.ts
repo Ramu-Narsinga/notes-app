@@ -9,6 +9,8 @@ import {
 
 let reducer: Reducer<AppState> = (state: AppState = initState, action: Action): AppState => {
     switch (action.type) {
+        case  'INIT_APP_DATA':
+          return Object.assign({}, state, (<AddNoteAction>action).payload)  
         case 'ADD_NOTE':
           let len = state.notes.length;
           (<AddNoteAction>action).payload.id = len;
@@ -31,7 +33,9 @@ let reducer: Reducer<AppState> = (state: AppState = initState, action: Action): 
           let activeNote: any = notes[activeIndex];
           debugger;
           if (activeNote.id != undefined) {
-            newState.notes.splice(activeIndex, 1);
+            // newState.notes.splice(activeIndex, 1);
+            newState.notes = [...state.notes.slice(0, activeIndex),
+              ...state.notes.slice(activeIndex + 1)]
             newState.activeIndex = activeIndex > 1 ? activeIndex - 1 : 0;
             return newState;
           } else {
@@ -42,7 +46,6 @@ let reducer: Reducer<AppState> = (state: AppState = initState, action: Action): 
             }
           }
         case 'SEARCH_NOTES':
-          let sNotes = [...state.notes];
           if (!(<AddNoteAction>action).payload.keyword) {
             return Object.assign(
               {}, 
@@ -51,6 +54,10 @@ let reducer: Reducer<AppState> = (state: AppState = initState, action: Action): 
                 notes: initState.notes
               });
           } else {
+            // let sNotes = [...state.notes];
+            let sNotes = [...initState.notes]; // get latest list of updated notes from local storage
+            // let sNotes = [...(<AddNoteAction>action).payload.notes];
+            // debugger;
             return Object.assign(
               {}, 
               state,

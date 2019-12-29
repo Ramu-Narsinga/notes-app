@@ -8,6 +8,8 @@ import { AppState } from '../../../utils/interfaces';
 
 import * as NotesAppActions from '../../../utils/store/actions';
 
+import { NotesAppService } from '../../../utils/services/notes-app.service';
+
 @Component({
   selector: 'app-toolbar',
   templateUrl: './toolbar.component.html',
@@ -17,34 +19,53 @@ export class ToolbarComponent implements OnInit {
 
   searchKey: any;
 
-  constructor(@Inject(AppStore) private store: Store<AppState>) { }
+  appState: any;
+
+  constructor(
+    @Inject(AppStore) private store: Store<AppState>, 
+    private notesAppService: NotesAppService) {}
 
   ngOnInit() {
   }
 
   addNote() {
+
+    let payload = {
+      title: '', 
+      description: '', 
+      timeStamp: Date.now()
+    }
+
+    // dispatch
     this.store.dispatch({
       type: NotesAppActions.ADD_NOTE, 
-      payload: {
-                  title: '', 
-                  description: '', 
-                  timeStamp: Date.now()
-                }
+      payload
     });
+
+    this.notesAppService.saveNotes();
   }
 
-  deleteNote(note) {
+  deleteNote() {
+
     this.store.dispatch({
       type: NotesAppActions.DELETE_NOTE
     });
+
+    this.notesAppService.deleteNotes();
   }
 
   searchNotes() {
     // console.log("searchKey", this.searchKey);
+
+    let {
+      notes
+    } = this.store.getState();
+
     this.store.dispatch({
       type: NotesAppActions.SEARCH_NOTES,
       payload: {
-        keyword: this.searchKey
+        keyword: this.searchKey,
+        notes
       }
     })
   }

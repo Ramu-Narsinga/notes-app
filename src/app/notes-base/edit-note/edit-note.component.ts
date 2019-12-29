@@ -8,6 +8,9 @@ import { AppState, Note } from '../../../utils/interfaces';
 
 import * as NotesAppActions from '../../../utils/store/actions';
 
+import { NotesAppService } from '../../../utils/services/notes-app.service';
+import { debug } from 'util';
+
 @Component({
   selector: 'app-edit-note',
   templateUrl: './edit-note.component.html',
@@ -17,7 +20,8 @@ export class EditNoteComponent implements OnInit {
 
   note: Note;
 
-  constructor(@Inject(AppStore) private store: Store<AppState>) { 
+  constructor(@Inject(AppStore) private store: Store<AppState>,
+              private notesAppService: NotesAppService) { 
 
     this.setActiveNote();
 
@@ -27,13 +31,23 @@ export class EditNoteComponent implements OnInit {
     });
   }
 
+  activeIndex: any;
+  notes: any = {
+    title: "",
+    description: "",
+    timeStamp: ""
+  };
+
   setActiveNote() {
+
     let {
       notes,
       activeIndex
     } = this.store.getState();
 
-    this.note = notes[activeIndex];
+    this.activeIndex = activeIndex;
+
+    this.notes = notes;
 
     if (!notes[activeIndex]) {
       this.note = {
@@ -41,6 +55,8 @@ export class EditNoteComponent implements OnInit {
         description: "",
         timeStamp: ""
       }
+    } else {
+      this.note = notes[activeIndex];
     }
   }
 
@@ -60,17 +76,21 @@ export class EditNoteComponent implements OnInit {
       description = event.target.value;
     }
 
+    let payload= {
+      note: {
+        id,
+        title: title,
+        description: description,
+        timeStamp: Date.now(),
+      }
+    };
+
     this.store.dispatch({
       type: NotesAppActions.UPDATE_NOTE, 
-      payload: {
-                note: {
-                  id,
-                  title: title,
-                  description: description,
-                  timeStamp: Date.now(),
-                }
-      }
+      payload
     });
+
+    this.notesAppService.updateNotes();
   }
 
   ngOnInit() {
