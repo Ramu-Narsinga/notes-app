@@ -1,8 +1,8 @@
-<div class="date">{{note ? formatTSDate(note.timeStamp) : ""}}</div>
-<!-- <span>TITLE:</span> -->
-<br /> 
-<input name="title" class="inp" placeholder="Title" [(ngModel)]="note.title" (input)="onNoteChange($event)" />
-<br />
-<!-- <span>Description:</span> -->
-<br />
-<textarea class="inp" rows="10" placeholder="Description" [(ngModel)]="note.description" name="description" (input)="onNoteChange($event)"></textarea>
+<div class="edit-nite-container">
+    <div class="date">{{note ? formatTSDate(note.timeStamp) : ""}}</div>
+    <br /> 
+    <input name="title" class="inp" placeholder="Title" [(ngModel)]="note.title" (input)="onNoteChange($event)" />
+    <br />
+    <br />
+    <textarea class="inp" rows="10" placeholder="Description" [(ngModel)]="note.description" name="description" (input)="onNoteChange($event)"></textarea>
+</div>

@@ -29,7 +29,7 @@ let reducer: Reducer<AppState> = (state: AppState = initState, action: Action): 
             activeIndex
           } = state;
           // console.log("state in delete_node", state);
-          debugger;
+          // debugger;
           return Object.assign(
             {}, 
             state, 
@@ -60,7 +60,7 @@ let reducer: Reducer<AppState> = (state: AppState = initState, action: Action): 
           }
         case 'SET_ACTIVE_INDEX':
           let sActiveIndex = (<AddNoteAction>action).payload.id;
-          debugger;
+          // debugger;
           return Object.assign(
             {}, 
             state,

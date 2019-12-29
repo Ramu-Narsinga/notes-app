@@ -102,7 +102,11 @@ export class EditNoteComponent implements OnInit {
   }
 
   formatTSDate(dateInMs) {
-    let d = new Date(dateInMs);
-    return d.toString().split("GMT")[0]; 
+    if (dateInMs) {
+      let d = new Date(dateInMs);
+      return d.toString().split("GMT")[0]; 
+    } else {
+      return "";
+    }
   }
 }
