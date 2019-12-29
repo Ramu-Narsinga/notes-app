@@ -11,6 +11,8 @@ import * as NotesAppActions from '../../../utils/store/actions';
 import { NotesAppService } from '../../../utils/services/notes-app.service';
 import { debug } from 'util';
 
+import { setInitState } from '../../../utils/store/initial-state';
+
 @Component({
   selector: 'app-edit-note',
   templateUrl: './edit-note.component.html',
@@ -92,6 +94,8 @@ export class EditNoteComponent implements OnInit {
     });
 
     this.notesAppService.updateNotes();
+    
+    setInitState(this.store.getState());
   }
 
   ngOnInit() {

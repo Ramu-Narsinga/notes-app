@@ -26,13 +26,11 @@ export class NotesBaseComponent implements OnInit {
 
   ngOnInit() {
     let payload = this.notesAppService.getNotesAppData();
-    this.store.subscribe(() => {
-      setInitState(payload);
-    });
     this.store.dispatch({
       type: NotesAppActions.INIT_APP_DATA, 
       payload
     });
+    setInitState(this.store.getState());
   }
 
 }

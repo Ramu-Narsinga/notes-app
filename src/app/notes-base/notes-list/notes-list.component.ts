@@ -12,6 +12,8 @@ import { NotesAppService } from '../../../utils/services/notes-app.service';
 
 import { viewPort } from '../../../utils/common';
 
+import { setInitState } from '../../../utils/store/initial-state';
+
 @Component({
   selector: 'app-notes-list',
   templateUrl: './notes-list.component.html',
@@ -68,6 +70,8 @@ export class NotesListComponent implements OnInit {
     });
 
     this.notesAppService.setActiveIndex();
+
+    setInitState(this.store.getState());
   }
 
   sidebarClosed: any = false;

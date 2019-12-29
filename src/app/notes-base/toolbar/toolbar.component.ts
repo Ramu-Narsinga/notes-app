@@ -10,6 +10,8 @@ import * as NotesAppActions from '../../../utils/store/actions';
 
 import { NotesAppService } from '../../../utils/services/notes-app.service';
 
+import { setInitState } from '../../../utils/store/initial-state';
+
 @Component({
   selector: 'app-toolbar',
   templateUrl: './toolbar.component.html',
@@ -43,6 +45,7 @@ export class ToolbarComponent implements OnInit {
     });
 
     this.notesAppService.saveNotes();
+    setInitState(this.store.getState());
   }
 
   deleteNote() {
@@ -52,6 +55,7 @@ export class ToolbarComponent implements OnInit {
     });
 
     this.notesAppService.deleteNotes();
+    setInitState(this.store.getState());
   }
 
   searchNotes() {
