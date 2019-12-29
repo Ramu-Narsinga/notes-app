@@ -1,10 +1,26 @@
-<ul>
-  <li *ngFor="let note of notesList" (click)="setActiveNote(note)">
-    <div>
-      Title: {{note.title}}
-    </div>
-    <div>
-      Description: {{note.description}}
-    </div>
-  </li>
-</ul>
+<div id="notes-sidebar" class="sidebar"> 
+    <a href="#" class="closebtn" *ngIf="!sideBarOpen" (click)="closeNav($event)">x</a>
+    <ul *ngIf="notesList.length != 0; else noNoteFound">
+      <li *ngFor="let note of notesList" (click)="setActiveNote(note)">
+        <div>
+          {{note.title}}
+        </div>
+        <div>
+          <span>
+              {{parseTSDate(note.timeStamp)}}
+          </span>
+          <span>
+              {{note.description}}
+          </span>
+        </div>
+      </li>
+    </ul>
+
+    <ng-template #noNoteFound>
+        No Notes Found.
+    </ng-template>
+</div>
+
+<div id="notes-list-e">
+    <a href="#" class="openbtn" *ngIf="sideBarOpen" (click)="openNav($event)">☰</a>
+</div>

@@ -1,0 +1,16 @@
+.inp {
+    width: 60vw;
+    background: white;
+    color: black;
+    border-radius: 5px;
+}
+
+.date {
+    text-align: center;
+    color: grey;
+}
+
+input[type=text], textarea {
+    border-style: inset;
+    border-width: 2px;
+}

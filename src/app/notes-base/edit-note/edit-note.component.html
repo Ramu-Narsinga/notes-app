@@ -1,3 +1,8 @@
-<input name="title" [(ngModel)]="note && note.title" (input)="onNoteChange($event)" />
-<textarea [(ngModel)]="note && note.description" name="description" (input)="onNoteChange($event)"></textarea>
-<div>{{parseTSDate(note.timeStamp)}}</div>
+<div class="date">{{formatTSDate(note.timeStamp)}}</div>
+<!-- <span>TITLE:</span> -->
+<br /> 
+<input name="title" class="inp" [(ngModel)]="note && note.title" (input)="onNoteChange($event)" />
+<br />
+<!-- <span>Description:</span> -->
+<br />
+<textarea class="inp" rows="10" [(ngModel)]="note && note.description" name="description" (input)="onNoteChange($event)"></textarea>
