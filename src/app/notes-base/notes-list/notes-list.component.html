@@ -7,7 +7,7 @@
         </div>
         <div>
           <span>
-              {{parseTSDate(note.timeStamp)}}
+              {{note && note.timeStamp ? parseTSDate(note.timeStamp) : (Date.now()).toLocaleTimeString()}}
           </span>
           <span>
               {{note.description}}
@@ -19,7 +19,7 @@
     <ng-template #noNoteFound>
       <ul>
         <li>
-          No Notes Found.
+          No Notes Available.
         </li>
       </ul>
     </ng-template>

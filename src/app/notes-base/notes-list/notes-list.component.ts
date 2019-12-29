@@ -89,17 +89,23 @@ export class NotesListComponent implements OnInit {
   weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 
   parseTSDate(dateInMs) {
-    let d = new Date(dateInMs);
-    let currentDate = new Date();
-    // show week day name if it is in past and falls with in a week
-    this.dayDifference = this.dateDiffInDays(d, currentDate);
-    // console.log("this.dayDifference", this.dayDifference);
-    if ( this.dayDifference > 1 && this.dayDifference <= 7 ) {
-      return  this.weekDays[d.getDay()]
-    } else if (this.dayDifference > 7) {
-      return d.getDate() + "/" + (d.getMonth()+1) + "/" + d.getFullYear();
+    // debugger;
+    if (dateInMs) {
+      let d = new Date(dateInMs);
+      let currentDate = new Date();
+      // show week day name if it is in past and falls with in a week
+      this.dayDifference = this.dateDiffInDays(d, currentDate);
+      // console.log("this.dayDifference", this.dayDifference);
+      if ( this.dayDifference > 1 && this.dayDifference <= 7 ) {
+        return  this.weekDays[d.getDay()]
+      } else if (this.dayDifference > 7) {
+        return d.getDate() + "/" + (d.getMonth()+1) + "/" + d.getFullYear();
+      } else {
+        // current Date
+        return d.toLocaleTimeString();
+      }
     } else {
-      // current Date
+      let d = new Date();
       return d.toLocaleTimeString();
     }
   }

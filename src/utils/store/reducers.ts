@@ -18,7 +18,8 @@ let reducer: Reducer<AppState> = (state: AppState = initState, action: Action): 
             {
               notes: state.notes.concat(
                 (<AddNoteAction>action).payload
-              )
+              ),
+              activeIndex: len
             });
         case 'DELETE_NOTE':
           let newState = {...state};
@@ -28,7 +29,7 @@ let reducer: Reducer<AppState> = (state: AppState = initState, action: Action): 
           } = newState;
 
           let activeNote: any = notes[activeIndex];
-          debugger;
+          // debugger;
           if (activeNote.id != undefined) {
             newState.notes.splice(activeIndex, 1);
             newState.activeIndex = activeIndex > 1 ? activeIndex - 1 : 0;
