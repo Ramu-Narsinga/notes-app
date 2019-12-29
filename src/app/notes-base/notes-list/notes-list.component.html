@@ -1,7 +1,7 @@
 <div id="notes-sidebar" class="sidebar" *ngIf="!sidebarClosed"> 
     <a href="#" class="closebtn" (click)="closeNav($event)">x</a>
     <ul *ngIf="notesList.length != 0; else noNoteFound">
-      <li *ngFor="let note of notesList; let i = index;" (click)="setActiveNote(note)" 
+      <li *ngFor="let note of notesList; let i = index;" (click)="setActiveNote(i)" 
           [ngClass]="{'active-note': i == activeIndex}">
         <div>
           {{note.title}}

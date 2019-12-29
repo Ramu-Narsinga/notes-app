@@ -42,7 +42,7 @@ export class NotesListComponent implements OnInit {
 
   readState() {
     const state: AppState = this.store.getState() as AppState;
-    // console.log("inside readState::", state);
+    console.log("inside readState::", state);
 
     this.activeIndex = state.activeIndex;
 
@@ -51,14 +51,14 @@ export class NotesListComponent implements OnInit {
 
   ngOnInit() {}
 
-  setActiveNote(note) {
+  setActiveNote(index) {
 
     // console.log("aftr upadte what is in note", note);
 
     this.store.dispatch({
       type: NotesAppActions.SET_ACTIVE_INDEX, 
       payload: {
-                id: note.id
+        id: index
       }
     });
   }
