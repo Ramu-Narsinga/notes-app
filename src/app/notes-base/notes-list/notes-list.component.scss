@@ -20,8 +20,13 @@
   display: block;
   transition: 0.2s;
   cursor: pointer;
-  padding-bottom: 12px;
 }
+
+.sidebar li {
+  padding-bottom: 10px;
+  margin-bottom: 12px;
+}
+
 
 .sidebar li:hover, .sidebar a:hover {
   color: #f1f1f1;
