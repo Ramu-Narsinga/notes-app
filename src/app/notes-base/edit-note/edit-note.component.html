@@ -1,9 +1,2 @@
-<div>
-  Title {{note.title}}
-</div>
-<div>
-  Description {{note.description}}
-</div>
-<div>
-  Time Stamp {{note.timeStamp}}
-</div>
+<input name="title" [(ngModel)]="note.title" (input)="onNoteChange($event)" />
+<textarea [(ngModel)]="note.description" name="description" (input)="onNoteChange($event)"></textarea>

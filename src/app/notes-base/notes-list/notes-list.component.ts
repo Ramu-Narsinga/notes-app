@@ -31,6 +31,9 @@ export class NotesListComponent implements OnInit {
   ngOnInit() {}
 
   setActiveNote(note) {
+
+    // console.log("aftr upadte what is in note", note);
+
     this.store.dispatch({
       type: NotesAppActions.SET_ACTIVE_INDEX, 
       payload: {

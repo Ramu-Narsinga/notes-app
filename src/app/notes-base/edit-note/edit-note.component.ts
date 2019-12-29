@@ -36,7 +36,35 @@ export class EditNoteComponent implements OnInit {
     this.note = notes[activeIndex];
   }
 
-  ngOnInit() {
+  onNoteChange(event) {
+
+    // console.log("entered text", event);
+
+    let {
+      title,
+      description, 
+      id
+    } = this.note;
+
+    if (event.target.name == "title") {
+      title = event.target.value;
+    } else {
+      description = event.target.value;
+    }
+
+    this.store.dispatch({
+      type: NotesAppActions.UPDATE_NOTE, 
+      payload: {
+                note: {
+                  id,
+                  title: title,
+                  description: description,
+                  timeStamp: Date.now(),
+                }
+      }
+    });
   }
 
+  ngOnInit() {
+  }
 }

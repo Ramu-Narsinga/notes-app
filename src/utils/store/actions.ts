@@ -22,3 +22,8 @@ export const SET_ACTIVE_INDEX: string = 'SET_ACTIVE_INDEX';
 export const activeIndex: ActionCreator<Action> = () => ({
   type: SET_ACTIVE_INDEX
 });
+
+export const UPDATE_NOTE: string = 'UPDATE_NOTE';
+export const updateNote: ActionCreator<Action> = () => ({
+  type: UPDATE_NOTE
+});
